@@ -1,0 +1,489 @@
+
+/* ========================================
+   1. VARIABLES DE COLOR Y TEMAS
+   ======================================== */
+
+:root {
+  color-scheme: light;
+  --color-fondo: #ffffff;
+  --color-texto: #1f2937;
+  --color-texto-secundario: #6b7280;
+  --color-tarjeta: #f9fafb;
+  --color-borde: #e5e7eb;
+  --color-primario: #2563eb;
+  --color-primario-hover: #1d4ed8;
+  --color-header: rgba(255, 255, 255, 0.95);
+  --color-footer: #f9fafb;
+  --color-boton-texto: #ffffff;
+  --sombra-tarjeta: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --color-fondo: #111827;
+  --color-texto: #f3f4f6;
+  --color-texto-secundario: #cbd5e1;
+  --color-tarjeta: #1f2937;
+  --color-borde: #374151;
+  --color-primario: #93c5fd;
+  --color-primario-hover: #bfdbfe;
+  --color-header: rgba(17, 24, 39, 0.96);
+  --color-footer: #1f2937;
+  --color-boton-texto: #111827;
+  --sombra-tarjeta: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* 2. ESTILOS GENERALES */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: var(--color-primario);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--color-primario-hover);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color-texto);
+  line-height: 1.25;
+}
+
+p {
+  color: var(--color-texto-secundario);
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* 3. NAVEGACIÓN */
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: var(--color-header);
+  border-bottom: 1px solid var(--color-borde);
+  backdrop-filter: blur(10px);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+nav {
+  width: min(1100px, 92%);
+  min-height: 72px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.logo {
+  color: var(--color-primario);
+  font-size: 1.3rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.logo:hover {
+  color: var(--color-primario-hover);
+}
+
+nav ul {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+nav ul a {
+  color: var(--color-texto);
+  font-weight: 500;
+}
+
+nav ul a:hover,
+nav ul a[aria-current="page"] {
+  color: var(--color-primario);
+}
+
+/* 4. BOTÓN DEL TEMA */
+
+.theme-toggle {
+  flex-shrink: 0;
+  padding: 9px 12px;
+  border: 1px solid var(--color-borde);
+  border-radius: 8px;
+  background-color: var(--color-primario);
+  color: var(--color-boton-texto);
+  font-family: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.theme-toggle:hover {
+  background-color: var(--color-primario-hover);
+  transform: translateY(-1px);
+}
+
+.theme-toggle:focus-visible,
+a:focus-visible {
+  outline: 3px solid var(--color-primario);
+  outline-offset: 3px;
+}
+
+/* 5. CONTENIDO Y PORTADA */
+
+.hero,
+.articles,
+.learning-section,
+.about-section,
+.contact-section {
+  width: min(1100px, 92%);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.hero {
+  padding-top: 76px;
+  padding-bottom: 64px;
+  text-align: center;
+}
+
+.hero h1 {
+  max-width: 800px;
+  margin: 0 auto 20px;
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  letter-spacing: -1px;
+}
+
+.hero > p:not(.eyebrow) {
+  max-width: 700px;
+  margin: 0 auto 28px;
+  font-size: 1.1rem;
+}
+
+.eyebrow {
+  margin: 0 0 12px;
+  color: var(--color-primario);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.primary-link {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 11px 18px;
+  border-radius: 8px;
+  background-color: var(--color-primario);
+  color: var(--color-boton-texto);
+  font-weight: 600;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.primary-link:hover {
+  color: var(--color-boton-texto);
+  opacity: 0.88;
+  transform: translateY(-2px);
+}
+
+/* 6. ARTÍCULOS */
+
+.articles {
+  padding-top: 20px;
+  padding-bottom: 72px;
+}
+
+.articles > h2,
+.about-section > h1,
+.contact-section > h1 {
+  margin-top: 0;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+}
+
+.section-intro,
+.page-intro {
+  max-width: 760px;
+  margin: 0 0 30px;
+  font-size: 1.05rem;
+}
+
+.article-grid,
+.about-grid,
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.article-card,
+.about-card,
+.contact-card {
+  overflow: hidden;
+  border: 1px solid var(--color-borde);
+  border-radius: 12px;
+  background-color: var(--color-tarjeta);
+  box-shadow: var(--sombra-tarjeta);
+  transition: background-color 0.25s ease, border-color 0.25s ease,
+    transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.article-card:hover,
+.about-card:hover,
+.contact-card:hover {
+  transform: translateY(-4px);
+}
+
+.article-card img {
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+}
+
+.article-content {
+  padding: 22px;
+}
+
+.article-category {
+  margin-top: 0;
+  margin-bottom: 8px;
+  color: var(--color-primario);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.article-content h3,
+.about-card h2,
+.contact-card h2 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 1.2rem;
+}
+
+.article-content p:not(.article-category) {
+  margin-bottom: 18px;
+}
+
+.article-content a {
+  font-weight: 600;
+}
+
+/* 7. SECCIÓN INFERIOR DE INICIO */
+
+.learning-section {
+  margin-bottom: 72px;
+  padding: 34px;
+  border: 1px solid var(--color-borde);
+  border-radius: 14px;
+  background-color: var(--color-tarjeta);
+}
+
+.learning-section h2 {
+  margin-top: 0;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+.learning-section p:last-child {
+  max-width: 800px;
+  margin-bottom: 0;
+}
+
+/* 8. QUIÉNES SOMOS */
+
+.about-section {
+  padding-top: 56px;
+  padding-bottom: 72px;
+}
+
+.about-card {
+  padding: 26px;
+}
+
+.card-number {
+  display: inline-block;
+  margin-bottom: 18px;
+  color: var(--color-primario);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.about-card p {
+  margin-bottom: 0;
+}
+
+.about-detail {
+  margin-top: 44px;
+  padding-top: 24px;
+  border-top: 1px solid var(--color-borde);
+}
+
+.about-detail h2,
+.contact-note h2 {
+  margin-top: 0;
+  font-size: 1.6rem;
+}
+
+/* 9. CONTACTO */
+
+.contact-section {
+  padding-top: 56px;
+  padding-bottom: 72px;
+}
+
+.contact-card {
+  padding: 26px;
+}
+
+.contact-icon {
+  margin-bottom: 16px;
+  font-size: 1.8rem;
+}
+
+.contact-card p {
+  margin-bottom: 12px;
+}
+
+.contact-card a {
+  overflow-wrap: anywhere;
+  font-weight: 600;
+}
+
+.contact-value {
+  color: var(--color-texto);
+  font-weight: 600;
+}
+
+.contact-note {
+  margin-top: 42px;
+  padding-top: 24px;
+  border-top: 1px solid var(--color-borde);
+}
+
+/* 10. FOOTER */
+
+footer {
+  padding: 28px 4%;
+  border-top: 1px solid var(--color-borde);
+  background-color: var(--color-footer);
+  text-align: center;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+footer p {
+  margin: 6px 0;
+  color: var(--color-texto-secundario);
+  font-size: 0.9rem;
+}
+
+footer strong {
+  color: var(--color-texto);
+}
+
+/* 11. DISEÑO RESPONSIVE */
+
+@media (max-width: 900px) {
+  .article-grid,
+  .about-grid,
+  .contact-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  nav {
+    flex-wrap: wrap;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+}
+
+@media (max-width: 620px) {
+  nav {
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .logo {
+    width: 100%;
+    text-align: center;
+  }
+
+  nav ul {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px 18px;
+  }
+
+  .theme-toggle {
+    font-size: 0.85rem;
+  }
+
+  .hero {
+    padding-top: 48px;
+    padding-bottom: 40px;
+  }
+
+  .article-grid,
+  .about-grid,
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .articles,
+  .about-section,
+  .contact-section {
+    padding-top: 36px;
+    padding-bottom: 48px;
+  }
+
+  .learning-section {
+    margin-bottom: 48px;
+    padding: 24px;
+  }
+}
+
+/* Reducir animaciones si el visitante lo prefiere */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
